@@ -1,0 +1,77 @@
+
+DOCKER ::: 
+
+POST-1::: Docker Lifecycle . 
+
+1.docker images          // shows all images on the host machines
+2.docker run hello-world // try to run the image locally if not downloads from the docker-hub.3
+3.docker run             // will run the image ,create container and will immediately terminate the container
+4.docker ps              // show all active container
+5.docker ps -a           // show all active/passive containers
+6.docker run --name R--N hello-world 
+
+// giving name to the container else random name are generated for that container.
+Note:- if more container are spun from same image it will generate container with ramdom name 
+
+
+docker -architecture "CTRL + P"
+
+7.docker images tagged as "OFFICIAL" are maintained by docker
+8.image name nomenclature
+ <REGISTRY>/<REPOSITORY:TAGNAME> // For OFFICIAL images
+ <REGISTRY>/<USERNAME>/<REPOSITORY:TAGNAME> // For UN-OFFICIAL images
+
+9.docker pull docker.io/devopstrainer/myrepo1:v6.0
+ 
+Note :: Default REGISTRY NAME is docker.io  
+
+-Metadata/Metainfo for docker is in /var/lib/docker
+
+10.docker pull command will download the image from docker-hub
+11.docker run command will download the image and run the container where as pull will just download and not run.
+12.docker tag <old image name> <newname>  //rename images
+13.docker tag devopstrainer/myrepo1:v6.0 devopsrhavy/collection:v7.0 // renames images copied from devopstrainer/myrepo1:v6.0 to devopsrhavy/collection:v7.0
+14.docker push devopsrhavy/collection:v7.0  // will upload image with the following hierarchy
+
+Note : TO push you need to login to you docker account by #docker login cmd
+
+Detached Mode :::
+
+15. docker run -itd ubuntu // container will be running and not ternimated
+
+ Note : -itd -- means iteractive terminal detached mode or default mode 
+         and will be active but you cant enter into the container as the name says "detached"
+ 
+16.docker stop container-id/container-name  //will stop the container 
+ 
+17.docker start container-id/container-name // will start the container.
+
+Attached Mode :::
+
+18. docker run -it ubuntu // interactive terminal mode , you will run into the container i.e attached mode 
+                          // just as you access machine and is used for some configurations.
+						 
+Note : type exit you will come out of the container and container will be terminated
+       press ctrl+p & ctrl+q  and container will be running .
+	   
+19. docker attach container-id/container-name 
+
+// will attach you the container same as -it mode and do the config but the container needs to be in running state
+ 
+//# docker start container-id/container-name and then 
+//# docker attach container-id/container-name 
+
+20.#docker rm container-id/container-name eg #docker rm sad_booth/R--N
+
+// will remove the container but it should be stopped state .
+
+#docker stop container-id/container-name 
+#docker rm -f container-id/container-name
+ 
+21.#docker rmi image-name   
+
+// to remove the images provided no container must be using that image .
+// to remove unoffical images that has username/reponame you should use the below syntax
+
+#docker images 
+#docker rmi devopsrhavy/collection:v7.0
